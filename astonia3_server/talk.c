@@ -15,27 +15,27 @@ Added RCS tags
 
 */
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <string.h>
 #include <ctype.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <string.h>
 
-#include "server.h"
-#include "notify.h"
-#include "log.h"
-#include "player.h"
-#include "see.h"
-#include "path.h"
-#include "mem.h"
-#include "sector.h"
 #include "btrace.h"
-#include "talk.h"
 #include "database.h"
+#include "log.h"
+#include "mem.h"
+#include "notify.h"
+#include "path.h"
+#include "player.h"
+#include "sector.h"
+#include "see.h"
+#include "server.h"
+#include "talk.h"
 
 // this is the low level "send text to character" routine ALL other functions MUST use
 // make sure you use log_char(cn,type,"%s",text) if text is NOT a format string.
-int log_char(int cn,int type,int dat1,char *format,...)
-{
+int log_char(int cn, int type, int dat1, char *format,...) {
+
 	va_list args;
         unsigned char buf[1024];
 	int len,nr,n;

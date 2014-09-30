@@ -52,17 +52,18 @@
 #include "chat.h"
 #include "club.h"
 
-int remove_item_from_body_bg(int cnID,int IID);
+int remove_item_from_body_bg(int cnID, int IID);
 
-unsigned long long chat_raw=0;
+unsigned long long chat_raw = 0;
 
-struct cname
-{
+struct cname {
+
 	char *name;
 	char *desc;
 };
 
-struct cname cname[]={
+struct cname cname[] = {
+
 	{"Announce","Announcements from management - NOLEAVE"},			//0
 	{"Info","Requesting staff help, technical and gameplay questions"},	//1
 	{"Gossip","Talk about Life, the Universe and Everything"},		//2
@@ -95,7 +96,7 @@ struct cname cname[]={
 	{NULL,NULL},								//29
 	{NULL,NULL},								//30
 	{"Staff","Staff member's private channel"},				//31
-	{"God","Ye God's private channel"}					//32
+	{"God","The God's private channel"}					//32
 };
 
 #define CHATSERVER	"localhost"
@@ -108,9 +109,9 @@ static int 	connected=0,
 
 static char *inbuf=NULL;
 
-static int connect_chat(void)
-{
-        int one=1,ret;
+static int connect_chat(void) {
+
+    int one=1,ret;
 	static struct sockaddr_in addr;
 	struct hostent *he;
 
@@ -488,10 +489,11 @@ static int write_chat(int cn,int channel,char *text)
 	else xID=ch[cn].ID;
 
 	switch(channel) {
-		case 0:		col=3; break;	// announce
+
+		case 0:		col=3;	break;	// announce
 		case 1:		col=12; break;	// info
-		case 2:		col=2; break;	// gossipe
-		case 3:		col=9; break;	// auction
+		case 2:		col=2;	break;	// gossipe
+		case 3:		col=9;	break;	// auction
 		case 4:		col=14; break; // v2
 		case 5:		col=15; break; // public clan
 		case 6:		col=10; break; // grats
@@ -502,9 +504,9 @@ static int write_chat(int cn,int channel,char *text)
 		case 11:	col=14; break; // kill
 		case 12:	col=16; break; // allied clan
 		case 13:	col=16; break; // club channel
-		case 31:	col=7; break;	// staff
-		case 32:	col=8; break;	// god
-		default:	col=2; break;
+		case 31:	col=7;	break;	// staff
+		case 32:	col=8;	break;	// god
+		default:	col=2;	break;
 	}
 
         if (channel==0) sprintf(buf,"°c%d%s",col,text);	// announce
